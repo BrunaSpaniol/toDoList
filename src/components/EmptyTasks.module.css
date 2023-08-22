@@ -1,0 +1,22 @@
+.emptyTasks {
+  padding: 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: transparent;
+  border-radius: 8px;
+  border-top: 1px solid var(--gray-400);
+
+  color: var(--gray-300);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.emptyTasks > img {
+  margin-bottom: 1rem;
+}
+
+.emptyTasks > strong {
+  font-weight: 700;
+}

@@ -1,0 +1,43 @@
+.wrapper {
+  background: linear-gradient(var(--gray-700) 50%, var(--gray-600) 50%);
+
+  display: grid;
+  padding: 0 22rem;
+  grid-template-columns: 1fr 5.625rem;
+  column-gap: 0.5rem;
+}
+
+.wrapper > input {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-700);
+  background: var(--gray-500);
+
+  color: var(--gray-300);
+  font-size: 1rem;
+}
+
+.wrapper > input:focus {
+  background-color: var(--gray-500);
+  color: var(--gray-100);
+}
+
+.wrapper > button {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--blue-400);
+  cursor: pointer;
+
+  color: var(--gray-100);
+  font-weight: 700;
+}
+
+.wrapper > button:hover {
+  background-color: var(--blue-300);
+}

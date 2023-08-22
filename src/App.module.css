@@ -1,0 +1,16 @@
+.wrapper {
+  max-width: 90rem;
+  padding-top: 5rem;
+}
+
+.backgroundColor {
+  background: var(--gray-600);
+  padding: 0 22rem 64rem 22rem;
+}
+
+.backgroundColor > div {
+  padding-top: 4rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}

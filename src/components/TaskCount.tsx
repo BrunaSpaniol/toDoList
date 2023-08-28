@@ -1,17 +1,31 @@
 import styles from "./TaskCount.module.css";
 
 interface TaskCountProps {
-  content?: "doneTasks" | "default";
-  value: number;
+  doneTasks: number;
+  createdTasks: number;
+  totalTasks: number;
 }
 
-export function TaskCount({ content="default", value }: TaskCountProps) {
-  const title = content !== "default" ? "Concluídas" : "Tarefas criadas";
-
+export function TaskCount({
+  doneTasks,
+  createdTasks,
+  totalTasks,
+}: TaskCountProps) {
   return (
-    <div className={styles.task}>
-      <p className={styles[content]}>{title}</p>
-      <span>{value}</span>
-    </div>
+    <section className={styles.taskCounterWrapper}>
+      <div className={styles.createdTasks}>
+        <p>Tarefas criadas</p>
+
+        <span>{createdTasks}</span>
+      </div>
+
+      <div className={styles.doneTasks}>
+        <p>Concluídas</p>
+
+        <span>
+          {doneTasks} de {totalTasks}
+        </span>
+      </div>
+    </section>
   );
 }

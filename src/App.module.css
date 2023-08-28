@@ -1,16 +1,17 @@
-.wrapper {
-  max-width: 90rem;
-  padding-top: 5rem;
+.taskPage {
+  display: grid;
+  justify-items: center;
+  max-width: 46rem;
 }
 
-.backgroundColor {
-  background: var(--gray-600);
-  padding: 0 22rem 64rem 22rem;
-}
-
-.backgroundColor > div {
-  padding-top: 4rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: space-between;
+@media (max-width: 768px) {
+  /* font size no mobile */
+  html {
+    font-size: 87.5%;
+  }
+  .taskPage {
+    max-width: 24rem;
+    grid-template-columns: 1fr;
+    padding: 0 1rem 0 1rem;
+  }
 }

@@ -1,9 +1,13 @@
-.wrapper {
+.background {
   background: linear-gradient(var(--gray-700) 50%, var(--gray-600) 50%);
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
 
+.wrapper {
   display: grid;
-  padding: 0 22rem;
-  grid-template-columns: 1fr 5.625rem;
+  grid-template-columns: 39.875rem 5.625rem;
   column-gap: 0.5rem;
 }
 
@@ -36,6 +40,8 @@
 
   color: var(--gray-100);
   font-weight: 700;
+
+  transition: background-color 0.1s;
 }
 
 .wrapper > button:hover {

@@ -1,3 +1,9 @@
+.taskContainer {
+  display: grid;
+  grid-template-columns: 46rem;
+  justify-content: center;
+}
+
 .task {
   padding: 1rem;
   display: flex;
@@ -14,6 +20,8 @@
   border: 0;
   padding: 0;
   cursor: pointer;
+
+  transition: background-color 0.1s;
 }
 
 .task > button:hover {
@@ -32,6 +40,8 @@
   border: 2px solid var(--blue-300);
   background: transparent;
   border-radius: 100%;
+
+  transition: background-color 0.1s;
 }
 
 .task > input:hover {
@@ -43,6 +53,8 @@
   border: none;
   background-image: url(../assets/iconChecked.svg);
   background-position: center;
+  color: var(--gray-300);
+  text-decoration-line: line-through;
 }
 
 .task > input:checked:hover {
@@ -53,7 +65,7 @@
   background-size: contain;
 }
 
-.task > input:checked:hover + p {
+.task > input:checked + p {
   color: var(--gray-300);
   text-decoration-line: line-through;
 }

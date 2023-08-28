@@ -4,28 +4,105 @@ import { CreateTaskBar } from "./components/CreateTaskBar";
 import styles from "./App.module.css";
 
 import "./global.css";
-import { TaskCount } from "./components/TaskCount";
-// import { EmptyTasks } from "./components/EmptyTasks";
+
+import { EmptyTasks } from "./components/EmptyTasks";
 import { Task } from "./components/Task";
+import { useMemo, useState } from "react";
+import { TaskCount } from "./components/TaskCount";
+
+export interface Task {
+  id: string;
+  isCheck: boolean;
+  message: string;
+}
+
+interface CounterTask {
+  createdTask: number;
+  doneTasks: number;
+}
 
 function App() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  function handleDeleteTask(id: string) {
+    const filteredtasks = tasks.filter((task) => task.id !== id);
+
+    setTasks(filteredtasks);
+  }
+
+  function handleCreateTask(task: Task) {
+    const newTask = [...tasks];
+
+    newTask.unshift(task);
+
+    setTasks(newTask);
+  }
+
+  function handleDoneTask(taskId: string, check: boolean) {
+    const editTask = tasks.reduce<Task[]>((accum, task) => {
+      if (task.id === taskId) {
+        const checkedTask = { ...task, isCheck: check };
+
+        check ? accum.push(checkedTask) : accum.unshift(checkedTask);
+      } else {
+        task.isCheck ? accum.push(task) : accum.unshift(task);
+      }
+
+      return accum;
+    }, [] as Task[]);
+
+    setTasks(editTask);
+  }
+
+  const countTasks = useMemo<CounterTask>(() => {
+    const doneTasks = tasks.reduce((accum, task) => {
+      if (task.isCheck) {
+        accum += 1;
+      }
+
+      return accum;
+    }, 0);
+
+    const activeTasks = tasks.length - doneTasks;
+
+    return { createdTask: activeTasks, doneTasks };
+  }, [tasks]);
+
+  function renderTasks() {
+    if (!tasks.length) {
+      return <EmptyTasks />;
+    }
+
+    return tasks?.map(({ id, isCheck, message }) => {
+      return (
+        <Task
+          key={id}
+          isCheck={isCheck}
+          message={message}
+          id={id}
+          handleDelete={handleDeleteTask}
+          handleDoneTask={handleDoneTask}
+        />
+      );
+    });
+  }
+
   return (
-    <section className={styles.wrapper}>
+    <div className={styles.taskPage}>
       <Header />
 
-      <CreateTaskBar />
+      <CreateTaskBar handleCreateTask={handleCreateTask} />
 
-      <main className={styles.backgroundColor}>
-        <div>
-          <TaskCount value={3} />
+      <section>
+        <TaskCount
+          doneTasks={countTasks?.doneTasks}
+          createdTasks={countTasks?.createdTask}
+          totalTasks={tasks.length}
+        />
 
-          <TaskCount content="doneTasks" value={3} />
-        </div>
-
-        {/* <EmptyTasks /> */}
-        <Task />
-      </main>
-    </section>
+        <div>{renderTasks()}</div>
+      </section>
+    </div>
   );
 }
 

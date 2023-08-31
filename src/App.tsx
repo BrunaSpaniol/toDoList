@@ -31,11 +31,7 @@ function App() {
   }
 
   function handleCreateTask(task: Task) {
-    const newTask = [...tasks];
-
-    newTask.unshift(task);
-
-    setTasks(newTask);
+    setTasks([task, ...tasks]);
   }
 
   function handleDoneTask(taskId: string, check: boolean) {
@@ -43,7 +39,7 @@ function App() {
       if (task.id === taskId) {
         const checkedTask = { ...task, isCheck: check };
 
-        check ? accum.push(checkedTask) : accum.unshift(checkedTask);
+        check ? [accum.push(checkedTask) ]: accum.unshift(checkedTask);
       } else {
         task.isCheck ? accum.push(task) : accum.unshift(task);
       }

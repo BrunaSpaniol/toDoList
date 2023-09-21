@@ -17,19 +17,23 @@ export function CreateTaskBar({ handleCreateTask }: CreateTaskBarProps) {
     setNewTask(message);
   }
 
-  function onCreateTask() {
+  function onCreateTask(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+
     const createTask = {
       id: uuidv4(),
       isCheck: false,
       message: newTask,
     };
+
     handleCreateTask(createTask);
+
     setNewTask("");
   }
 
   return (
     <section className={styles.background}>
-      <div className={styles.wrapper}>
+      <form className={styles.wrapper}>
         <input
           placeholder="Adicione uma nova tarefa"
           type="text"
@@ -38,11 +42,15 @@ export function CreateTaskBar({ handleCreateTask }: CreateTaskBarProps) {
           onChange={(event) => handleInputChange(event.target.value)}
         ></input>
 
-        <button onClick={onCreateTask}>
+        <button
+          onClick={(e) => onCreateTask(e)}
+          type="submit"
+          disabled={!newTask.length}
+        >
           Criar
           <PlusCircle size={16} />
         </button>
-      </div>
+      </form>
     </section>
   );
 }

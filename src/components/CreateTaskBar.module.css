@@ -42,8 +42,10 @@
   font-weight: 700;
 
   transition: background-color 0.1s;
-}
-
-.wrapper > button:hover {
-  background-color: var(--blue-300);
+    &:hover {
+    background-color: var(--blue-300);
+  }
+    &:disabled {
+      cursor:not-allowed;
+    }
 }

@@ -1,27 +1,87 @@
-# React + TypeScript + Vite
+# toDoList
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de lista de tarefas desenvolvido com TypeScript, React e Class Components.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Adicionar novas tarefas à lista.
+- Remover tarefas existentes.
+- Atualizar o status das tarefas (pendente/concluída).
+- Marcar uma tarefa como concluída.
 
-## Expanding the ESLint configuration
+## Instalação
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Para executar este projeto localmente, siga os passos abaixo:
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone o repositório:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+   ```
+   git clone https://github.com/BrunaSpaniol/toDoList.git
+   ```
+
+2. Instale as dependências:
+
+   ```
+   cd toDoList
+   npm install
+   ```
+
+3. Inicie a aplicação:
+
+   ```
+   npm start
+   ```
+
+A aplicação estará disponível em `http://localhost:3000`.
+
+## Estrutura do Projeto
+
+A estrutura do projeto está organizada da seguinte maneira:
+
+```
+toDoList/
+├── public/
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── TaskList.tsx
+│   │   ├── TaskForm.tsx
+│   │   └── ...
+│   ├── types/
+│   │   ├── Task.ts
+│   │   └── ...
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── ...
+├── package.json
+└── ...
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Componentes Principais
+
+### `TaskForm.tsx`
+
+Este componente permite adicionar novas tarefas à lista.
+
+### `TaskList.tsx`
+
+Exibe a lista de tarefas, permitindo a remoção e atualização do status das mesmas.
+
+## Tipos de Dados
+
+### `Task.ts`
+
+Define a estrutura de dados de uma tarefa, incluindo propriedades como `id`, `title`, `completed`, entre outras.
+
+## Contribuindo
+
+Sinta-se à vontade para contribuir com melhorias neste projeto! Abra uma issue ou envie um pull request.
+
+## Autor
+
+Desenvolvido por [Bruna Spaniol](https://github.com/BrunaSpaniol).
+
+---
+
+Este README fornece uma visão geral do projeto, suas funcionalidades, como configurar e executar localmente, além de detalhes sobre a estrutura do código e como contribuir.

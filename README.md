@@ -81,7 +81,3 @@ Sinta-se à vontade para contribuir com melhorias neste projeto! Abra uma issue 
 ## Autor
 
 Desenvolvido por [Bruna Spaniol](https://github.com/BrunaSpaniol).
-
----
-
-Este README fornece uma visão geral do projeto, suas funcionalidades, como configurar e executar localmente, além de detalhes sobre a estrutura do código e como contribuir.
